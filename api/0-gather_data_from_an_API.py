@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Module returns information about his/her TO_DO list progress
-when an employee ID is provided as argument.
+Module returns information about his/her TODO list progress
+when an employee ID is provided as an argument.
 """
 import requests
 import sys
@@ -12,14 +12,17 @@ def get_employee_todo_progress(employee_id):
     """
     # Get the user name through the API
     user_response = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id))
+        'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id)
+    )
     user_data = user_response.json()  # Parse user names to JSON
     employee_name = user_data['name']
 
     # Get the user's tasks through the API
     todo_response = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-            employee_id))
+            employee_id
+        )
+    )
     todo_data = todo_response.json()  # Parse user's tasks to JSON
     total_tasks = len(todo_data)  # Get the total number of tasks
 
@@ -29,7 +32,8 @@ def get_employee_todo_progress(employee_id):
 
     # Print the user's tasks
     print("Employee {} is done with tasks({}/{}):".format(
-        employee_name, num_done_tasks, total_tasks))
+        employee_name, num_done_tasks, total_tasks
+    ))
     for task in done_tasks:
         print("\t {}".format(task['title']))
 
