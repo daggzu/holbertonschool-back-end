@@ -35,7 +35,7 @@ def get_employee_todo_progress(employee_id):
         employee_name, num_done_tasks, total_tasks
     ))
     for task in done_tasks:
-        print("\t {}".format(task['title']))
+        print("\t{}".format(task['title']))
 
 if __name__ == '__main__':
     # Extract employee ID from command-line arguments
